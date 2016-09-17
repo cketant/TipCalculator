@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TipCalculator: UIViewController {
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func calcTip(_ sender: AnyObject) {
+        tipLabel.text = "$10.00"
+        totalLabel.text = "$110.00"
+    }
 
+    @IBAction func onTap(_ sender: AnyObject) {
+        view.endEditing(true)
+    }
 }
 
