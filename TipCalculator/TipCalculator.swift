@@ -14,9 +14,11 @@ class TipCalculator: UIViewController {
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var segment: UISegmentedControl!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        self.segment.selectedSegmentIndex = defaults.integer(forKey: "tip_index")
+        billChange(self)
     }
 
     override func didReceiveMemoryWarning() {
