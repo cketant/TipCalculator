@@ -11,6 +11,10 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     var defaultTip: String!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let tipPercents     = ["18%", "20%", "25%"]
@@ -20,7 +24,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,14 +33,20 @@ class SettingsTableViewController: UITableViewController {
             cell.detailTextLabel?.text = self.defaultTip
             return cell
         }else {
-            let cell = UITableViewCell()
+            let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
             cell.textLabel?.text = "Default Tip"
             cell.detailTextLabel?.text = self.defaultTip
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             return cell
         }
         
     }
-
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "default_tip_segue", sender: self)
+    }
     
     // MARK: - Navigation
 

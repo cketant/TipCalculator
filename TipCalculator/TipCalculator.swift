@@ -20,10 +20,10 @@ class TipCalculator: UIViewController {
         self.segment.selectedSegmentIndex = defaults.integer(forKey: "tip_index")
         billChange(self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.animateBackground()
     }
 
     @IBAction func billChange(_ sender: AnyObject) {
@@ -34,10 +34,36 @@ class TipCalculator: UIViewController {
         
         tipLabel.text       = String(format: "$%.2f", tip)
         totalLabel.text     = String(format: "$%.2f", total)
+        
+        let defaults        = UserDefaults.standard
+        defaults.set(segment.selectedSegmentIndex, forKey: "tip_index")
+        defaults.synchronize()
+        
+        self.animateBackground()
+        
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
         self.view!.endEditing(true)
+    }
+    
+    func animateBackground() {
+        let defaults = UserDefaults.standard
+        var color: UIColor = UIColor.white
+        switch defaults.integer(forKey: "tip_index") {
+        case 0:
+            color = UIColor.white
+        case 1:
+            color = UIColor.lightGray
+        case 2:
+            color = UIColor.darkGray
+        default:
+            color = UIColor.white
+        }
+        UIView.animate(withDuration: 0.4) {
+            self.view.backgroundColor = color
+        }
+
     }
 
 }

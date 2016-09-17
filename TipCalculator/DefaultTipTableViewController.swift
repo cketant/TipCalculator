@@ -12,26 +12,50 @@ class DefaultTipTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tipPercents     = ["18%", "20%", "25%"]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell" ) {
+            let defaults = UserDefaults.standard
+            let tipIndex = defaults.integer(forKey: "tip_index")
+            if indexPath.row == tipIndex {
+                cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            }else {
+                cell.accessoryType = UITableViewCellAccessoryType.none
+            }
+            return cell
+        }else {
+            let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+            let defaults = UserDefaults.standard
+            let tipIndex = defaults.integer(forKey: "tip_index")
+            if indexPath.row == tipIndex {
+                cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            }else {
+                cell.accessoryType = UITableViewCellAccessoryType.none
+            }
+            cell.textLabel?.text = tipPercents[indexPath.row]
+            return cell
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let defaults = UserDefaults.standard
+        defaults.set(indexPath.row, forKey: "tip_index")
+        defaults.synchronize()
+        self.tableView.reloadData()
+    }
 
 }
