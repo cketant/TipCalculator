@@ -68,6 +68,9 @@
                                     <segment title="20%"/>
                                     <segment title="25%"/>
                                 </segments>
+                                <connections>
+                                    <action selector="billChange:" destination="6cp-pC-GX0" eventType="valueChanged" id="esH-We-YWC"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b0e-ne-dEb">
                                 <frame key="frameInset" minX="123" minY="87" width="181" height="30"/>
@@ -76,18 +79,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="calcTip:" destination="6cp-pC-GX0" eventType="editingDidEnd" id="PVr-8h-JUj"/>
+                                    <action selector="billChange:" destination="6cp-pC-GX0" eventType="editingChanged" id="8sw-hY-jiu"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVE-7Q-fII">
-                                <frame key="frameInset" minX="123" minY="179" width="181" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVE-7Q-fII">
+                                <frame key="frameInset" minX="123" minY="179" width="181" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuy-HX-QGv">
-                                <frame key="frameInset" minX="123" minY="287" width="181" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuy-HX-QGv">
+                                <frame key="frameInset" minX="123" minY="287" width="181" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -97,19 +100,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="uLL-Mt-qpi" appends="YES" id="kuq-So-xiP"/>
+                            <outletCollection property="gestureRecognizers" destination="Xu0-Im-HZa" appends="YES" id="1r5-Vv-JAR"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="TipTap" id="EdH-nk-hfX"/>
+                    <navigationItem key="navigationItem" title="TipTap" id="L7c-mb-oEl"/>
                     <connections>
+                        <outlet property="billField" destination="b0e-ne-dEb" id="I2M-C4-IWe"/>
+                        <outlet property="segment" destination="ZTe-sr-HMi" id="RhK-Sg-RGy"/>
                         <outlet property="tipLabel" destination="tVE-7Q-fII" id="zXL-ah-FCS"/>
                         <outlet property="totalLabel" destination="Uuy-HX-QGv" id="7Le-Mh-vp7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9s-Vp-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uLL-Mt-qpi">
+                <tapGestureRecognizer id="Xu0-Im-HZa">
                     <connections>
-                        <action selector="onTap:" destination="6cp-pC-GX0" id="P0k-39-qyW"/>
+                        <action selector="onTap:" destination="6cp-pC-GX0" id="pI0-dM-taU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
