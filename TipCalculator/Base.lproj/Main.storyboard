@@ -113,9 +113,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="b0e-ne-dEb" id="I2M-C4-IWe"/>
-                        <outlet property="segment" destination="ZTe-sr-HMi" id="RhK-Sg-RGy"/>
-                        <outlet property="tipLabel" destination="tVE-7Q-fII" id="zXL-ah-FCS"/>
-                        <outlet property="totalLabel" destination="Uuy-HX-QGv" id="7Le-Mh-vp7"/>
+                        <outlet property="billTitleLabel" destination="9NN-4g-3OO" id="3xh-UX-pzP"/>
+                        <outlet property="segment" destination="ZTe-sr-HMi" id="Sh7-Uh-AZg"/>
+                        <outlet property="tipLabel" destination="tVE-7Q-fII" id="f2d-TO-kko"/>
+                        <outlet property="tipTitleLabel" destination="2TM-bm-Qd0" id="Wxl-RG-ahY"/>
+                        <outlet property="totalLabel" destination="Uuy-HX-QGv" id="7z8-ph-b6f"/>
+                        <outlet property="totalTitleLabel" destination="6h2-Tw-PhW" id="8DD-uv-IQT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9s-Vp-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,25 +138,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="8dR-x7-Qc8">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Rxz-ES-pHk">
+                                    <segments>
+                                        <segment title="Light"/>
+                                        <segment title="Dark"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="colorThemeChange:" destination="lZj-Xx-VAm" eventType="valueChanged" id="N75-sE-V24"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Rxz-ES-pHk" firstAttribute="leading" secondItem="8dR-x7-Qc8" secondAttribute="leading" constant="8" id="QdI-nu-70d"/>
+                                <constraint firstItem="Rxz-ES-pHk" firstAttribute="top" secondItem="8dR-x7-Qc8" secondAttribute="top" constant="8" id="S3w-FD-lyC"/>
+                                <constraint firstAttribute="trailing" secondItem="Rxz-ES-pHk" secondAttribute="trailing" constant="8" id="eGX-bV-DIo"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="KfT-Q5-FzK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="jS6-3B-jZc" detailTextLabel="ZcN-g5-2sz" style="IBUITableViewCellStyleValue1" id="Th9-Ez-F2q" customClass="DefaultTipTableViewCell" customModule="TipCalculator" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Th9-Ez-F2q" id="R6E-Fu-uP8">
                                             <frame key="frameInset" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Default Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jS6-3B-jZc">
-                                                    <frame key="frameInset" minX="15" minY="11" width="34" height="21"/>
+                                                    <frame key="frameInset" minX="15" minY="11" width="84" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="18%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZcN-g5-2sz">
-                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                    <frame key="frameInset" minX="254" minY="11" width="31" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,12 +196,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="XS3-4j-nM2"/>
                     <connections>
+                        <outlet property="colorSegment" destination="Rxz-ES-pHk" id="qSK-yh-5rV"/>
                         <segue destination="Nr9-Im-Yqe" kind="show" identifier="default_tip_segue" id="kc1-8X-c78"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODT-3j-Y0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1256" y="168"/>
+            <point key="canvasLocation" x="1254.375" y="167.95774647887325"/>
         </scene>
         <!--Default Tip-->
         <scene sceneID="6fj-Dr-ZgA">
@@ -253,7 +278,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chC-Wc-hwi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2119" y="165"/>
+            <point key="canvasLocation" x="2079" y="-398"/>
         </scene>
     </scenes>
     <resources>

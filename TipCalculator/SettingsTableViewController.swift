@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     var defaultTip: String!
+    var themeIndex: NSInteger!
+    
+    @IBOutlet weak var colorSegment: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,7 @@ class SettingsTableViewController: UITableViewController {
         let tipPercents     = ["18%", "20%", "25%"]
         let defaults = UserDefaults.standard
         self.defaultTip = tipPercents[defaults.integer(forKey: "tip_index")]
+        self.colorSegment.selectedSegmentIndex = defaults.integer(forKey: "color_theme_index")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,18 +47,15 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView .deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "default_tip_segue", sender: self)
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func colorThemeChange(_ sender: AnyObject) {
+        let defaults = UserDefaults.standard
+        defaults.set(self.colorSegment.selectedSegmentIndex, forKey: "color_theme_index")
+        defaults.synchronize()
     }
-
+    
 }
