@@ -30,10 +30,14 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 Version 1:
+
+
 ![alt text](https://github.com/cketant/TipCalculator/blob/master/docs/walkthrough_v1.gif "Walkthrough1")
 
 
 Version 2:
+
+
 ![alt text](https://github.com/cketant/TipCalculator/blob/master/docs/walkthrough_v2.gif "Walkthrough2")
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
