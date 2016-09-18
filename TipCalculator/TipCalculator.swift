@@ -37,6 +37,8 @@ class TipCalculator: UIViewController {
         default:
             self.animateBackground(isLight: true)
         }
+        self.billField.placeholder = NSLocale.current.currencySymbol
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,11 +72,15 @@ class TipCalculator: UIViewController {
     @IBAction func billChange(_ sender: AnyObject) {
         let tipPercents     = [0.18, 0.2, 0.25]
         let bill            = Double(billField.text!) ?? 0
-        let tip             = bill * tipPercents[segment.selectedSegmentIndex]
-        let total           = bill + tip
+        let tipNum          = bill * tipPercents[segment.selectedSegmentIndex]
+        let tip             = NumberFormatter.localizedString(from: NSNumber.init(value: bill * tipPercents[segment.selectedSegmentIndex]),
+                                                              number: NumberFormatter.Style.currency)
+        let total           = NumberFormatter.localizedString(from: NSNumber.init(value: tipNum+bill), number: NumberFormatter.Style.currency)
+
         
-        tipLabel.text       = String(format: "$%.2f", tip)
-        totalLabel.text     = String(format: "$%.2f", total)
+        tipLabel.text       = tip
+        totalLabel.text     = total
+        self.billField.placeholder = NSLocale.current.currencySymbol
         
         let defaults        = UserDefaults.standard
         defaults.set(segment.selectedSegmentIndex, forKey: "tip_index")
@@ -109,16 +115,16 @@ class TipCalculator: UIViewController {
         var color: UIColor = UIColor.white
         switch defaults.integer(forKey: "tip_index") {
         case 0:
-            color = UIColor.white
+            color = UIColor.green
         case 1:
-            color = UIColor.lightGray
+            color = UIColor.yellow
         case 2:
-            color = UIColor.darkGray
+            color = UIColor.red
         default:
-            color = UIColor.white
+            color = UIColor.green
         }
-        UIView.animate(withDuration: 0.4) {
-            self.navigationController?.navigationBar.backgroundColor = color;
+        UIView.animate(withDuration: 0.9) {
+            self.navigationController?.navigationBar.barTintColor = color
         }
 
     }

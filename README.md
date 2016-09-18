@@ -4,7 +4,7 @@
 
 Submitted by: **Christopher Ketant**
 
-Time spent: **5** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -16,18 +16,25 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [x] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [x] Using locale-specific currency and currency thousands separators.
+* [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 * [x] Light/Dark Theme
+* [x] Launch Image
+* [x] App Icon
+
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-![alt text](https://github.com/cketant/TipCalculator/blob/master/docs/walkthrough_v1.gif "Walkthrough")
+Version 1:
+![alt text](https://github.com/cketant/TipCalculator/blob/master/docs/walkthrough_v1.gif "Walkthrough1")
 
+
+Version 2:
+![alt text](https://github.com/cketant/TipCalculator/blob/master/docs/walkthrough_v2.gif "Walkthrough2")
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
